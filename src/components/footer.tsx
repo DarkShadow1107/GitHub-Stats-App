@@ -34,7 +34,7 @@ export default function Footer() {
               <div className="space-y-1">
                 <h4 className="text-sm font-semibold">@DarkShadow1107</h4>
                 <p className="text-sm text-muted-foreground">
-                  A community-driven open source developer collective.
+                  An open source developer who loves to build new things.
                 </p>
               </div>
               <Button asChild variant="outline">
