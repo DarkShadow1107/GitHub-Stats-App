@@ -164,6 +164,7 @@ const ImgPreview = ({
               src={imgSrc}
               alt={alt}
               priority
+              unoptimized
               onLoadStart={() => setImgLoad(true)}
               onLoad={() => setImgLoad(false)}
             />
@@ -183,10 +184,11 @@ const ImgPreview = ({
             <Image
               width={400}
               height={150}
-              className="w-full output cursor-pointer"
+              className="w-full output cursor-pointer hover:scale-[1.02] transition-transform duration-300"
               src={imgSrc}
               alt={alt}
               priority
+              unoptimized
               onLoadStart={() => setImgLoad(true)}
               onLoad={() => setImgLoad(false)}
               onClick={() => setOpenDialog(value)}

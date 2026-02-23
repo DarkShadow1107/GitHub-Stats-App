@@ -13,7 +13,7 @@ export default function Footer() {
       <HoverCard>
         <HoverCardTrigger asChild>
           <p className="text-center text-muted-foreground sm:text-sm text-xs">
-            &copy; 2024{" "}
+            &copy; 2026{" "}
             <a
               href="https://github.com/DarkShadow1107"
               target="_blank"
