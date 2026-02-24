@@ -130,13 +130,16 @@ const ImgPreview = ({
   const copyToClipboard = (type: string) => {
     if (username) {
       let copiedText = "";
+      const fullImgSrc = imgSrc.startsWith("/")
+        ? `${window.location.origin}${imgSrc}`
+        : imgSrc;
 
       if (type === "markdown") {
-        copiedText = `![GitHub Stats](${imgSrc})`;
+        copiedText = `![GitHub Stats](${fullImgSrc})`;
       } else if (type === "url") {
-        copiedText = imgSrc;
+        copiedText = fullImgSrc;
       } else if (type === "code") {
-        copiedText = `<img src="${imgSrc}" alt="${username}'s GitHub Stats" />`;
+        copiedText = `<img src="${fullImgSrc}" alt="${username}'s GitHub Stats" />`;
       }
       navigator.clipboard.writeText(copiedText);
       toast.success(`Copied to Clipboard as ${type}.`);
