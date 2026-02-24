@@ -6,23 +6,27 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
- ✓ Ready in 1898ms
- ○ Compiling /api/stats ...
- ✓ Compiled /api/stats in 549ms (56 modules)
- GET /api/stats?username=DarkShadow1107&theme=tokyonight 200 in 3398ms
- ✓ Compiled in 246ms (56 modules)
-Extracted Rank: A+
-Rank Percentage: 95
- GET /api/stats?username=DarkShadow1107&theme=tokyonight 200 in 324ms
- ✓ Compiled in 20ms
+ ✓ Ready in 1764ms
  ○ Compiling / ...
- ✓ Compiled / in 9.7s (958 modules)
- GET / 200 in 11442ms
+ ✓ Compiled / in 11.5s (958 modules)
+ GET / 200 in 13578ms
  ○ Compiling /api/stats ...
- ✓ Compiled /api/stats in 9s (968 modules)
- GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true 200 in 7709ms
+ ✓ Compiled /api/stats in 9.7s (968 modules)
+ GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 10472ms
+ ✓ Compiled /user/[username] in 446ms (959 modules)
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 2542ms
+ GET / 200 in 234ms
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=letter 200 in 280ms
+ ✓ Compiled in 630ms (945 modules)
+ GET / 200 in 548ms
+ ✓ Compiled /api/stats in 288ms (519 modules)
+ GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 723ms
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 155ms
+ GET / 200 in 208ms
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=letter 200 in 278ms
+ ✓ Compiled in 464ms (973 modules)
+ GET / 200 in 216ms
+ GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 363ms
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=number 200 in 167ms
+ GET / 200 in 45ms
+ GET /api/stats?username=torvalds&theme=default&show_icons=true&hide_border=true&count_private=true&grade_format=letter 200 in 269ms
