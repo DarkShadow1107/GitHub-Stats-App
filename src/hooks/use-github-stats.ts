@@ -10,7 +10,7 @@ export const useGithubStats = (data: Stats) => {
 
   const stats = `https://github-readme-stats-eight-theta.vercel.app/api?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&count_private=${countPrivate}`;
 
-  const topLanguages = `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&layout=compact`;
+  const topLanguages = `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&layout=compact&langs_count=8`;
 
   const streak = `https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=${theme}&hide_border=${hideBorder}`;
 
