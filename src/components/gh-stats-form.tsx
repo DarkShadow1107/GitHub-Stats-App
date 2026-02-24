@@ -48,6 +48,7 @@ const FormSchema = z.object({
   }),
   hideBorder: z.boolean(),
   countPrivate: z.boolean(),
+  gradeFormat: z.enum(["number", "letter"]),
 });
 
 export function GhStatsForm() {
@@ -63,19 +64,20 @@ export function GhStatsForm() {
       username: "",
       hideBorder: true,
       countPrivate: true,
+      gradeFormat: "number",
       theme: themePreview || "default",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const { username, theme, hideBorder, countPrivate } = data;
+    const { username, theme, hideBorder, countPrivate, gradeFormat } = data;
 
     setLoading(true);
 
     toast.success("Generated GitHub Stats!");
 
     push(
-      `/user/${username}?theme=${theme}&hide_border=${hideBorder}&count_private=${countPrivate}`
+      `/user/${username}?theme=${theme}&hide_border=${hideBorder}&count_private=${countPrivate}&grade_format=${gradeFormat}`
     );
   }
 
@@ -186,11 +188,11 @@ export function GhStatsForm() {
                           <Switch
                             checked={field.value}
                             onCheckedChange={field.onChange}
-                            id="privCommits"
+                            id="hideBorder"
                           />
                         </FormControl>
                       </FormItem>
-                      <Label htmlFor="priv-commits" className="mb-1">
+                      <Label htmlFor="hideBorder" className="mb-1">
                         Hide Card Border
                       </Label>
                     </div>
@@ -207,12 +209,33 @@ export function GhStatsForm() {
                           <Switch
                             checked={field.value}
                             onCheckedChange={field.onChange}
-                            id="privCommits"
+                            id="countPrivate"
                           />
                         </FormControl>
                       </FormItem>
-                      <Label htmlFor="priv-commits" className="mb-1">
+                      <Label htmlFor="countPrivate" className="mb-1">
                         Count Private Commits
+                      </Label>
+                    </div>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="gradeFormat"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value === "number"}
+                            onCheckedChange={(checked) => field.onChange(checked ? "number" : "letter")}
+                            id="gradeFormat"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="gradeFormat" className="mb-1">
+                        Use Numeric Grade
                       </Label>
                     </div>
                   )}

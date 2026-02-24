@@ -33,12 +33,14 @@ export const Preview = () => {
   const theme = searchParams.get("theme") || themePreview || baseTheme;
   const countPrivate = searchParams.get("count_private") || "true";
   const hideBorder = searchParams.get("hide_border") || "true";
+  const gradeFormat = searchParams.get("grade_format") || "number";
 
   const { stats, topLanguages, streak } = useGithubStats({
     username: username ?? "DarkShadow1107",
     theme,
     countPrivate,
     hideBorder,
+    gradeFormat,
   });
 
   const tabsData = [

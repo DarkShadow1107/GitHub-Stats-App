@@ -3,12 +3,13 @@ export type Stats = {
   username?: string;
   countPrivate?: string;
   hideBorder?: string;
+  gradeFormat?: string;
 };
 
 export const useGithubStats = (data: Stats) => {
-  const { theme, username, countPrivate, hideBorder } = data;
+  const { theme, username, countPrivate, hideBorder, gradeFormat } = data;
 
-  const stats = `/api/stats?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&count_private=${countPrivate}`;
+  const stats = `/api/stats?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&count_private=${countPrivate}&grade_format=${gradeFormat || "number"}`;
 
   const topLanguages = `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&layout=compact&langs_count=10`;
 
