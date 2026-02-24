@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GitHub Stats Generator
 
-## Getting Started
+A modern, fast, and customizable GitHub Stats Generator built with Next.js 14, Tailwind CSS, and Shadcn UI. Create stunning GitHub stats cards for your profile READMEs with ease.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-time Preview:** See changes instantly as you customize your stats card.
+- **Theme Selection:** Choose from a wide variety of themes including Default, Dark, Radical, Tokyo Night, Dracula, and many more.
+- **Customization Options:**
+  - Toggle card border visibility.
+  - Option to include private commits in the count.
+  - Switch between numeric and letter grade formats.
+- **Responsive Design:** Looks great on any device.
+- **Modern UI:** Built with Shadcn UI for a clean and professional look.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js 14](https://nextjs.org/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Form Handling:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Analytics:** [PostHog](https://posthog.com/)
+- **Notifications:** [Sonner](https://sonner.emilkowal.ski/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🏁 Getting Started
 
-## Learn More
+Follow these steps to set up the project locally on your machine.
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Make sure you have [Node.js](https://nodejs.org/) installed on your system.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/stats.git
+   cd stats
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📖 Usage
+
+1. **Enter Username:** Type your GitHub username in the input field.
+2. **Select Theme:** Choose a theme from the dropdown menu to match your profile aesthetic.
+3. **Customize:** Use the settings gear icon to toggle options:
+   - **Hide Card Border:** Removes the border around the stats card.
+   - **Count Private Commits:** Include private contributions in the total count.
+   - **Use Numeric Grade:** Display a numeric grade instead of a letter grade.
+4. **Generate:** Click the "Generate Stats" button to create your custom stats card.
+5. **Share:** Copy the generated URL or Markdown code and paste it into your GitHub profile README.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
