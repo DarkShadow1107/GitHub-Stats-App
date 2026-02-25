@@ -61,12 +61,12 @@ export function generateStatsSvg(
     else if (calculatedScore >= 20) displayRank = "D";
     else displayRank = "F";
   } else {
-    displayRank = calculatedScore.toFixed(2);
+    displayRank = Math.round(calculatedScore).toString();
   }
 
   // 3. Calculate Rank Circle Offset
   const percentage = calculatedScore;
-  const circumference = 250;
+  const circumference = 251.327;
   const offset = circumference - (circumference * percentage) / 100;
 
   // 4. Construct new SVG
@@ -83,10 +83,34 @@ export function generateStatsSvg(
     }
   }
 
+  // Extract primary color from .header or use default
+  const headerColorMatch = style.match(/\.header\s*{[^}]*fill:\s*([^;}]*)/);
+  const primaryColor = headerColorMatch ? headerColorMatch[1].trim() : "#2f80ed";
+
   style += `
     @keyframes rankAnimation {
       from { stroke-dashoffset: ${circumference}; }
       to { stroke-dashoffset: ${offset}; }
+    }
+  `;
+
+  style += `
+    .rank-circle-rim {
+      stroke: ${primaryColor};
+      opacity: 0.2;
+      stroke-width: 6;
+      fill: none;
+    }
+    .rank-circle {
+      stroke: ${primaryColor};
+      stroke-width: 6;
+      stroke-dasharray: ${circumference};
+      fill: none;
+      stroke-linecap: round;
+      opacity: 0.8;
+      transform-origin: 0 0;
+      transform: rotate(-90deg);
+      animation: rankAnimation 1s forwards ease-in-out;
     }
   `;
 
@@ -113,12 +137,6 @@ export function generateStatsSvg(
   ];
 
   // Calculate height based on number of items
-  // Original was 195 for 5 items.
-  // Each item is 25px.
-  // Padding top 55 (header + title).
-  // Padding bottom ~20.
-  // 5 items * 25 = 125. 55 + 125 + 15 = 195.
-  // 7 items * 25 = 175. 55 + 175 + 15 = 245.
   const height = 55 + (items.length * 25) + 15;
   const width = 495;
 
@@ -145,18 +163,11 @@ export function generateStatsSvg(
   const titleMatch = svgContent.match(/<text[^>]*class="header"[^>]*>([^<]*)<\/text>/);
   const title = titleMatch ? titleMatch[1] : "My GitHub Statistics";
 
-  // Adjust Rank Circle Position if needed
-  // Centered vertically relative to the card?
-  // height / 2 - 55 (55 is the top translation of the body)
+  // Adjust Rank Circle Position
   const rankCircleY = height / 2 - 55;
 
-  // Adjust font size for number grade if it's long (e.g. 100.00)
-  // Actually 100.00 is 6 chars. rank-text might need adjustment.
-  // The default font-size for rank is usually large.
-  // If number, maybe smaller?
-  const rankFontSize = gradeFormat === "number" ? "24px" : "40px"; // Default is likely big
-  // But I can't easily change the class definition unless I inject more CSS.
-  // Let's modify the style for .rank-text text.
+  // Adjust font size for number grade
+  const rankFontSize = gradeFormat === "number" ? "24px" : "40px";
 
   style += `
     .rank-text { font-size: ${rankFontSize}; }
@@ -174,7 +185,7 @@ export function generateStatsSvg(
       </g>
 
       <g data-testid="main-card-body" transform="translate(0, 55)">
-        <g data-testid="rank-circle" transform="translate(400, ${rankCircleY})">
+        <g data-testid="rank-circle" transform="translate(430, ${rankCircleY})">
           <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
           <circle class="rank-circle" cx="0" cy="0" r="40" />
           <g class="rank-text">
