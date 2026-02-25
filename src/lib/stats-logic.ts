@@ -167,10 +167,11 @@ export function generateStatsSvg(
   const rankCircleY = height / 2 - 55;
 
   // Adjust font size for number grade
-  const rankFontSize = gradeFormat === "number" ? "24px" : "40px";
+  const rankFontSize = gradeFormat === "number" ? "45px" : "50px";
 
   style += `
     .rank-text { font-size: ${rankFontSize}; }
+    .rank-score-text { font-size: ${rankFontSize}; fill: ${primaryColor}; }
   `;
 
   const newSvg = `
@@ -189,7 +190,7 @@ export function generateStatsSvg(
           <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
           <circle class="rank-circle" cx="0" cy="0" r="40" />
           <g class="rank-text">
-            <text x="0" y="0" alignment-baseline="central" dominant-baseline="central" text-anchor="middle" class="stat">${displayRank}</text>
+            <text x="0" y="0" alignment-baseline="central" dominant-baseline="central" text-anchor="middle" class="rank-score-text">${displayRank}</text>
           </g>
         </g>
 
