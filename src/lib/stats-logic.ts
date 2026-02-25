@@ -171,7 +171,7 @@ export function generateStatsSvg(
 
   style += `
     .rank-text { font-size: ${rankFontSize}; }
-    .rank-score-text { font-size: ${rankFontSize}; fill: ${primaryColor}; }
+    .rank-score-text { font-size: ${rankFontSize}; fill: ${primaryColor}; font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; }
   `;
 
   const newSvg = `
@@ -190,7 +190,7 @@ export function generateStatsSvg(
           <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
           <circle class="rank-circle" cx="0" cy="0" r="40" />
           <g class="rank-text">
-            <text x="0" y="0" alignment-baseline="central" dominant-baseline="central" text-anchor="middle" class="rank-score-text">${displayRank}</text>
+            <text x="0" y="0" dominant-baseline="central" dy="0.05em" text-anchor="middle" class="rank-score-text">${displayRank}</text>
           </g>
         </g>
 
