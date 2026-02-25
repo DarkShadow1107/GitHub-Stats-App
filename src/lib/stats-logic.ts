@@ -164,10 +164,10 @@ export function generateStatsSvg(
   const title = titleMatch ? titleMatch[1] : "My GitHub Statistics";
 
   // Adjust Rank Circle Position
-  const rankCircleY = height / 2 - 55;
+  const rankCircleY = (items.length * 25) / 2;
 
   // Adjust font size for number grade
-  const rankFontSize = gradeFormat === "number" ? "45px" : "50px";
+  const rankFontSize = gradeFormat === "number" ? "40.5px" : "45px";
 
   style += `
     .rank-text { font-size: ${rankFontSize}; }
