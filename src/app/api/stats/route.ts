@@ -16,7 +16,12 @@ export async function GET(request: NextRequest) {
 
   try {
     // 1. Fetch the base stats SVG from the external mirror
-    const statsUrl = `https://github-readme-stats-eight-theta.vercel.app/api?username=${username}&theme=${theme}&show_icons=true&hide_border=${hideBorder}&count_private=${countPrivate}`;
+    const encodedUsername = encodeURIComponent(username);
+    const encodedTheme = encodeURIComponent(theme);
+    const encodedHideBorder = encodeURIComponent(hideBorder);
+    const encodedCountPrivate = encodeURIComponent(countPrivate);
+
+    const statsUrl = `https://github-readme-stats-eight-theta.vercel.app/api?username=${encodedUsername}&theme=${encodedTheme}&show_icons=true&hide_border=${encodedHideBorder}&count_private=${encodedCountPrivate}`;
     const statsRes = await fetch(statsUrl);
     if (!statsRes.ok) {
       return new NextResponse("Failed to fetch stats", { status: statsRes.status });
@@ -24,7 +29,7 @@ export async function GET(request: NextRequest) {
     const svgContent = await statsRes.text();
 
     // 2. Fetch user profile for public_repos and followers count
-    const userUrl = `https://api.github.com/users/${username}`;
+    const userUrl = `https://api.github.com/users/${encodedUsername}`;
     const userRes = await fetch(userUrl);
     let publicRepos = 0;
     let followers = 0;

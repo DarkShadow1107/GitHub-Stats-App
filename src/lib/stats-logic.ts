@@ -11,6 +11,20 @@ export function generateStatsSvg(
 ): string {
   const { gradeFormat } = options;
 
+  // Simple XML escaping function
+  const escapeXml = (unsafe: string): string => {
+    return unsafe.replace(/[<>&"']/g, (c) => {
+      switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case '"': return '&quot;';
+        case '\'': return '&apos;';
+        default: return c;
+      }
+    });
+  };
+
   // 1. Parse SVG content
   const extractStat = (id: string) => {
     const match = svgContent.match(new RegExp(`data-testid="${id}"[^>]*>([^<]*)<`));
@@ -147,7 +161,7 @@ export function generateStatsSvg(
           <path fill-rule="evenodd" d="${iconPath}" />
         </svg>
         <text class="stat bold" x="25" y="12.5">${label}:</text>
-        <text class="stat" x="200" y="12.5">${value}</text>
+        <text class="stat" x="200" y="12.5">${escapeXml(value)}</text>
       </g>
     </g>
   `;
@@ -167,7 +181,7 @@ export function generateStatsSvg(
   const rankCircleY = (items.length * 25) / 2;
 
   // Adjust font size for number grade
-  const rankFontSize = gradeFormat === "number" ? "40.5px" : "45px";
+  const rankFontSize = gradeFormat === "number" ? "34.4px" : "38.25px";
 
   style += `
     .rank-text { font-size: ${rankFontSize}; }
@@ -181,7 +195,7 @@ export function generateStatsSvg(
 
       <g data-testid="card-title" transform="translate(25, 35)">
         <g transform="translate(0, 0)">
-          <text x="0" y="0" class="header" data-testid="header">${title}</text>
+          <text x="0" y="0" class="header" data-testid="header">${escapeXml(title)}</text>
         </g>
       </g>
 
@@ -190,7 +204,7 @@ export function generateStatsSvg(
           <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
           <circle class="rank-circle" cx="0" cy="0" r="40" />
           <g class="rank-text">
-            <text x="0" y="0" dominant-baseline="central" dy="0.05em" text-anchor="middle" class="rank-score-text">${displayRank}</text>
+            <text x="0" y="0" dominant-baseline="central" text-anchor="middle" class="rank-score-text">${escapeXml(displayRank)}</text>
           </g>
         </g>
 
