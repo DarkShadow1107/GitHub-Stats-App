@@ -102,20 +102,20 @@ export function generateStatsSvg(
   const primaryColor = headerColorMatch ? headerColorMatch[1].trim() : "#2f80ed";
 
   style += `
-    @keyframes rankAnimation {
+    @keyframes customRankAnimation {
       from { stroke-dashoffset: ${circumference}; }
       to { stroke-dashoffset: ${offset}; }
     }
   `;
 
   style += `
-    .rank-circle-rim {
+    .custom-rank-circle-rim {
       stroke: ${primaryColor};
       opacity: 0.2;
       stroke-width: 6;
       fill: none;
     }
-    .rank-circle {
+    .custom-rank-circle {
       stroke: ${primaryColor};
       stroke-width: 6;
       stroke-dasharray: ${circumference};
@@ -124,7 +124,7 @@ export function generateStatsSvg(
       opacity: 0.8;
       transform-origin: 0 0;
       transform: rotate(-90deg);
-      animation: rankAnimation 1s forwards ease-in-out;
+      animation: customRankAnimation 1s forwards ease-in-out;
     }
   `;
 
@@ -184,8 +184,8 @@ export function generateStatsSvg(
   const rankFontSize = gradeFormat === "number" ? "34.4px" : "38.25px";
 
   style += `
-    .rank-text { font-size: ${rankFontSize}; }
-    .rank-score-text { font-size: ${rankFontSize}; fill: ${primaryColor}; font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; }
+    .custom-rank-text { font-size: ${rankFontSize}; }
+    .custom-rank-score-text { font-size: ${rankFontSize}; fill: ${primaryColor}; font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; font-weight: bold; }
   `;
 
   const newSvg = `
@@ -201,10 +201,10 @@ export function generateStatsSvg(
 
       <g data-testid="main-card-body" transform="translate(0, 55)">
         <g data-testid="rank-circle" transform="translate(430, ${rankCircleY})">
-          <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
-          <circle class="rank-circle" cx="0" cy="0" r="40" />
-          <g class="rank-text">
-            <text x="0" y="0" dominant-baseline="central" text-anchor="middle" dy="0.05em" class="rank-score-text">${escapeXml(displayRank)}</text>
+          <circle class="custom-rank-circle-rim" cx="0" cy="0" r="40" />
+          <circle class="custom-rank-circle" cx="0" cy="0" r="40" />
+          <g class="custom-rank-text">
+            <text x="0" y="0" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" dy="0.35em" class="custom-rank-score-text">${escapeXml(displayRank)}</text>
           </g>
         </g>
 
