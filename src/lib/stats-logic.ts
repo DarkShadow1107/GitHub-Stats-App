@@ -204,7 +204,7 @@ export function generateStatsSvg(
           <circle class="rank-circle-rim" cx="0" cy="0" r="40" />
           <circle class="rank-circle" cx="0" cy="0" r="40" />
           <g class="rank-text">
-            <text x="0" y="0" dominant-baseline="central" text-anchor="middle" class="rank-score-text">${escapeXml(displayRank)}</text>
+            <text x="0" y="0" dominant-baseline="central" text-anchor="middle" dy="0.05em" class="rank-score-text">${escapeXml(displayRank)}</text>
           </g>
         </g>
 
