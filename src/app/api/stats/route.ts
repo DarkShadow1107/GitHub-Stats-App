@@ -33,15 +33,19 @@ export async function GET(request: NextRequest) {
     const userRes = await fetch(userUrl);
     let publicRepos = 0;
     let followers = 0;
+    let following = 0;
+    let publicGists = 0;
     if (userRes.ok) {
       const userData = await userRes.json();
       publicRepos = userData.public_repos || 0;
       followers = userData.followers || 0;
+      following = userData.following || 0;
+      publicGists = userData.public_gists || 0;
     }
 
     const newSvg = generateStatsSvg(
       svgContent,
-      { public_repos: publicRepos, followers: followers },
+      { public_repos: publicRepos, followers: followers, following: following, public_gists: publicGists },
       { theme, hideBorder, countPrivate, gradeFormat }
     );
 
