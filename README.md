@@ -2,6 +2,54 @@
 
 A modern, fast, and customizable GitHub Stats Generator built with Next.js 14, Tailwind CSS, and Shadcn UI. Create stunning GitHub stats cards for your profile READMEs with ease.
 
+
+## 📈 Grading System
+
+The stats generator calculates a "harsh grade" score based on various contributions. The formula uses a weighted sum of different GitHub metrics to produce a raw score, which is then mapped to a percentage using an exponential curve.
+
+### Metrics Weights:
+- **Stars**: x2.0
+- **Commits**: x0.1
+- **PRs**: x0.5
+- **Issues**: x0.2
+- **Contributed to**: x0.5
+- **Followers**: x0.5
+
+The final score is mapped to a 0-100 scale using the formula: `100 * (1 - e^(-score / 500))`.
+
+This score is rendered either as a Letter Grade (S, A+, A, B+, etc.) or a Numeric Percentage with 2 decimal places.
+
+## 📊 Included Stats
+
+The generated SVG card includes the following statistics:
+- **Total Stars**: The number of stars your repositories have collected.
+- **Total Commits**: Number of commits made (public, and optionally private).
+- **Total PRs**: Pull requests created.
+- **Total Issues**: Issues opened.
+- **Contributed to**: Repositories you've contributed to that you don't own.
+- **Total Repos / Public Repos**: Repository count (Dynamic label based on your private counting preference).
+- **Following**: Number of users you follow.
+- **Public Gists**: Number of public gists you've created.
+- **Followers**: Number of users following you.
+
+## 🔌 API Usage
+
+The API is fully open and can be accessed via the `/api/stats` endpoint.
+
+**Endpoint**: `GET /api/stats`
+
+**Parameters**:
+- `username` (required): Your GitHub username.
+- `theme` (optional): Theme name for the card (e.g. `default`, `dark`, `radical`).
+- `hide_border` (optional): Set to `true` to hide the card border.
+- `count_private` (optional): Set to `true` to count private contributions and use the "Total Repos" label.
+- `grade_format` (optional): Set to `number` to show percentage, or `letter` to show Letter grades.
+
+### Example
+```markdown
+[![My GitHub Stats](https://my-domain.com/api/stats?username=torvalds&theme=radical&grade_format=number)](https://github.com/torvalds)
+```
+
 ## 🚀 Features
 
 - **Real-time Preview:** See changes instantly as you customize your stats card.
