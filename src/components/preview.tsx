@@ -38,6 +38,13 @@ export const Preview = () => {
   const showTotalContributions = searchParams.get("show_total_contributions") || "false";
   const showStreak = searchParams.get("show_streak") || "false";
   const progressionBars = searchParams.get("progression_bars") || "false";
+  const titleColor = searchParams.get("title_color") || undefined;
+  const textColor = searchParams.get("text_color") || undefined;
+  const iconColor = searchParams.get("icon_color") || undefined;
+  const bgColor = searchParams.get("bg_color") || undefined;
+  const borderColor = searchParams.get("border_color") || undefined;
+  const borderRadius = searchParams.get("border_radius") || undefined;
+  const disableAnimations = searchParams.get("disable_animations") || undefined;
 
   const { stats, topLanguages, streak } = useGithubStats({
     username: username ?? "DarkShadow1107",
@@ -49,6 +56,13 @@ export const Preview = () => {
     showTotalContributions,
     showStreak,
     progressionBars,
+    titleColor,
+    textColor,
+    iconColor,
+    bgColor,
+    borderColor,
+    borderRadius,
+    disableAnimations,
   });
 
   const tabsData = [

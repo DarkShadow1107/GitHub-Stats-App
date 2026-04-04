@@ -379,9 +379,105 @@ export function GhStatsForm() {
                     </div>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="disableAnimations"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            id="disableAnimations"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="disableAnimations" className="mb-1">
+                        Disable Animations
+                      </Label>
+                    </div>
+                  )}
+                />
               </div>
             </PopoverContent>
           </Popover>
+        </div>
+
+        {/* Custom Colors & Borders Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="titleColor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title Color</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. 2f80ed or #2f80ed" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="textColor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Text Color</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. 434d58 or #434d58" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="iconColor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Icon Color</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. 4c71f2 or #4c71f2" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="bgColor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Background Color</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. fffefe or #fffefe" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="borderColor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Border Color</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. e4e2e2 or #e4e2e2" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="borderRadius"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Border Radius</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. 4.5" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
         </div>
 
         <Button type="submit" disabled={loading} className="w-full">
