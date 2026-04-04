@@ -38,6 +38,7 @@ import { Button } from "@/components/ui/button";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -405,82 +406,114 @@ export function GhStatsForm() {
         </div>
 
         {/* Custom Colors & Borders Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="titleColor"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title Color</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. 2f80ed or #2f80ed" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="textColor"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Text Color</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. 434d58 or #434d58" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="iconColor"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Icon Color</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. 4c71f2 or #4c71f2" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="bgColor"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Background Color</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. fffefe or #fffefe" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="borderColor"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Border Color</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. e4e2e2 or #e4e2e2" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="borderRadius"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Border Radius</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. 4.5" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-        </div>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="advanced-customization">
+            <AccordionTrigger className="text-lg font-medium">Advanced Customizations</AccordionTrigger>
+            <AccordionContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+            <FormField
+              control={form.control}
+              name="titleColor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title Color</FormLabel>
+                  <div className="flex gap-2">
+                    <FormControl>
+                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '2f80ed'}`} />
+                    </FormControl>
+                    <FormControl>
+                      <Input placeholder="#2f80ed" {...field} />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="textColor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Text Color</FormLabel>
+                  <div className="flex gap-2">
+                    <FormControl>
+                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '434d58'}`} />
+                    </FormControl>
+                    <FormControl>
+                      <Input placeholder="#434d58" {...field} />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="iconColor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Icon Color</FormLabel>
+                  <div className="flex gap-2">
+                    <FormControl>
+                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '4c71f2'}`} />
+                    </FormControl>
+                    <FormControl>
+                      <Input placeholder="#4c71f2" {...field} />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="bgColor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Background Color</FormLabel>
+                  <div className="flex gap-2">
+                    <FormControl>
+                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || 'fffefe'}`} />
+                    </FormControl>
+                    <FormControl>
+                      <Input placeholder="#fffefe" {...field} />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="borderColor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Border Color</FormLabel>
+                  <div className="flex gap-2">
+                    <FormControl>
+                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || 'e4e2e2'}`} />
+                    </FormControl>
+                    <FormControl>
+                      <Input placeholder="#e4e2e2" {...field} />
+                    </FormControl>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="borderRadius"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Border Radius (px)</FormLabel>
+                  <FormControl>
+                    <Input type="number" placeholder="4.5" {...field} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
-        <Button type="submit" disabled={loading} className="w-full">
+        <Button type="submit" disabled={loading} className="w-full mt-4">
           {!loading ? "Generate Stats" : <Icons.spinner />}
         </Button>
       </form>
