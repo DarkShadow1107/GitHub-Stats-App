@@ -1,0 +1,213 @@
+
+> stats@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 1302ms
+
+ HEAD /api/top-langs?username=torvalds 200 in 1599ms (next.js: 1333ms, application-code: 266ms)
+○ Compiling / ...
+ GET / 200 in 13.6s (next.js: 12.6s, application-code: 1063ms)
+[browser] [PostHog.js] PostHog was initialized without a token. This likely indicates a misconfiguration. Please check the first argument passed to posthog.init()
+    at module evaluation (src/app/provider.tsx:7:11)
+   5 |
+   6 | if (typeof window !== "undefined") {
+>  7 |   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+     |           ^
+   8 |     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+   9 |   });
+  10 | } (src/app/provider.tsx:7:11)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="src/layout...">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <script>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html
+                            lang="en"
+-                           className="light"
+-                           style={{color-scheme:"light"}}
+                          >
+                  ...
+
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndMaybeFocusHandler cacheNode={{rsc:{...}, ...}}>
+      <InnerScrollAndFocusHandlerOld focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="/" loading={[...]}>
+            <Suspense name="/" fallback={<Fragment>}>
+              <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} ...>
+                        <SegmentViewNode type="page" pagePath="src/page.tsx">
+                          <SegmentTrieNode>
+                          <Home>
+                            <main className="flex gap-1...">
+                              <div>
+                              <Footer>
+                                <footer className="w-full fon...">
+-                                 <p
+-                                   className="text-center text-muted-foreground sm:text-sm text-xs"
+-                                   data-state="closed"
+-                                 >
+                        ...
+                      ...
+        ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at footer (<anonymous>)
+    at Footer (src/components/footer.tsx:12:5)
+    at Home (src/app/page.tsx:22:7)
+  10 | export default function Footer() {
+  11 |   return (
+> 12 |     <footer className="w-full font-mono py-3">
+     |     ^
+  13 |       <HoverCard>
+  14 |         <HoverCardTrigger asChild>
+  15 |           <p className="text-center text-muted-foreground sm:text-sm text-xs">
+ GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&grade_format=number&score_size=normal&show_total_contributions=false&show_streak=false&progression_bars=false 200 in 3.5s (next.js: 790ms, application-code: 2.7s)
+ GET /api/top-langs?username=torvalds&theme=synthwave 200 in 166ms (next.js: 36ms, application-code: 130ms)
+ GET / 200 in 162ms (next.js: 6ms, application-code: 156ms)
+[browser] [PostHog.js] PostHog was initialized without a token. This likely indicates a misconfiguration. Please check the first argument passed to posthog.init()
+    at module evaluation (src/app/provider.tsx:7:11)
+   5 |
+   6 | if (typeof window !== "undefined") {
+>  7 |   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+     |           ^
+   8 |     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+   9 |   });
+  10 | } (src/app/provider.tsx:7:11)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="src/layout...">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <script>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html
+                            lang="en"
+-                           className="light"
+-                           style={{color-scheme:"light"}}
+                          >
+                  ...
+
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndMaybeFocusHandler cacheNode={{rsc:{...}, ...}}>
+      <InnerScrollAndFocusHandlerOld focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="/" loading={[...]}>
+            <Suspense name="/" fallback={<Fragment>}>
+              <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} ...>
+                        <SegmentViewNode type="page" pagePath="src/page.tsx">
+                          <SegmentTrieNode>
+                          <Home>
+                            <main className="flex gap-1...">
+                              <div>
+                              <Footer>
+                                <footer className="w-full fon...">
+-                                 <p
+-                                   className="text-center text-muted-foreground sm:text-sm text-xs"
+-                                   data-state="closed"
+-                                 >
+                        ...
+                      ...
+        ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at footer (<anonymous>)
+    at Footer (src/components/footer.tsx:12:5)
+    at Home (src/app/page.tsx:22:7)
+  10 | export default function Footer() {
+  11 |   return (
+> 12 |     <footer className="w-full font-mono py-3">
+     |     ^
+  13 |       <HoverCard>
+  14 |         <HoverCardTrigger asChild>
+  15 |           <p className="text-center text-muted-foreground sm:text-sm text-xs">
+ GET /api/stats?username=DarkShadow1107&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&grade_format=number&score_size=normal&show_total_contributions=false&show_streak=false&progression_bars=false 200 in 1519ms (next.js: 7ms, application-code: 1513ms)
+ GET /api/top-langs?username=torvalds&theme=synthwave 200 in 124ms (next.js: 3ms, application-code: 120ms)
