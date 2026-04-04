@@ -34,6 +34,10 @@ export const Preview = () => {
   const countPrivate = searchParams.get("count_private") || "true";
   const hideBorder = searchParams.get("hide_border") || "true";
   const gradeFormat = searchParams.get("grade_format") || "number";
+  const scoreSize = searchParams.get("score_size") || "normal";
+  const showTotalContributions = searchParams.get("show_total_contributions") || "false";
+  const showStreak = searchParams.get("show_streak") || "false";
+  const progressionBars = searchParams.get("progression_bars") || "false";
 
   const { stats, topLanguages, streak } = useGithubStats({
     username: username ?? "DarkShadow1107",
@@ -41,6 +45,10 @@ export const Preview = () => {
     countPrivate,
     hideBorder,
     gradeFormat,
+    scoreSize,
+    showTotalContributions,
+    showStreak,
+    progressionBars,
   });
 
   const tabsData = [

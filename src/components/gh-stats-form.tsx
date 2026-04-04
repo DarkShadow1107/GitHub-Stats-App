@@ -49,6 +49,17 @@ const FormSchema = z.object({
   hideBorder: z.boolean(),
   countPrivate: z.boolean(),
   gradeFormat: z.enum(["number", "letter"]),
+  scoreSize: z.enum(["normal", "large"]),
+  showTotalContributions: z.boolean(),
+  showStreak: z.boolean(),
+  progressionBars: z.boolean(),
+  titleColor: z.string().optional(),
+  textColor: z.string().optional(),
+  iconColor: z.string().optional(),
+  bgColor: z.string().optional(),
+  borderColor: z.string().optional(),
+  borderRadius: z.string().optional(),
+  disableAnimations: z.boolean().default(false),
 });
 
 export function GhStatsForm() {
@@ -66,19 +77,63 @@ export function GhStatsForm() {
       countPrivate: true,
       gradeFormat: "number",
       theme: themePreview || "default",
+      scoreSize: "normal",
+      showTotalContributions: false,
+      showStreak: false,
+      progressionBars: false,
+      titleColor: "",
+      textColor: "",
+      iconColor: "",
+      bgColor: "",
+      borderColor: "",
+      borderRadius: "",
+      disableAnimations: false,
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const { username, theme, hideBorder, countPrivate, gradeFormat } = data;
+    const {
+      username,
+      theme,
+      hideBorder,
+      countPrivate,
+      gradeFormat,
+      scoreSize,
+      showTotalContributions,
+      showStreak,
+      progressionBars,
+      titleColor,
+      textColor,
+      iconColor,
+      bgColor,
+      borderColor,
+      borderRadius,
+      disableAnimations
+    } = data;
 
     setLoading(true);
 
     toast.success("Generated GitHub Stats!");
 
-    push(
-      `/user/${username}?theme=${theme}&hide_border=${hideBorder}&count_private=${countPrivate}&grade_format=${gradeFormat}`
-    );
+    const query = new URLSearchParams();
+    query.set("theme", theme);
+    query.set("hide_border", hideBorder.toString());
+    query.set("count_private", countPrivate.toString());
+    query.set("grade_format", gradeFormat);
+    query.set("score_size", scoreSize);
+    query.set("show_total_contributions", showTotalContributions.toString());
+    query.set("show_streak", showStreak.toString());
+    query.set("progression_bars", progressionBars.toString());
+
+    if (titleColor) query.set("title_color", titleColor.replace("#", ""));
+    if (textColor) query.set("text_color", textColor.replace("#", ""));
+    if (iconColor) query.set("icon_color", iconColor.replace("#", ""));
+    if (bgColor) query.set("bg_color", bgColor.replace("#", ""));
+    if (borderColor) query.set("border_color", borderColor.replace("#", ""));
+    if (borderRadius) query.set("border_radius", borderRadius);
+    if (disableAnimations) query.set("disable_animations", "true");
+
+    push(`/user/${username}?${query.toString()}`);
   }
 
   function updateThemePreview(_theme: string) {
@@ -236,6 +291,90 @@ export function GhStatsForm() {
                       </FormItem>
                       <Label htmlFor="gradeFormat" className="mb-1">
                         Use Numeric Grade
+                      </Label>
+                    </div>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="scoreSize"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value === "large"}
+                            onCheckedChange={(checked) => field.onChange(checked ? "large" : "normal")}
+                            id="scoreSize"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="scoreSize" className="mb-1">
+                        Large Score Circle
+                      </Label>
+                    </div>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="showTotalContributions"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            id="showTotalContributions"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="showTotalContributions" className="mb-1">
+                        Show Total Contributions
+                      </Label>
+                    </div>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="showStreak"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            id="showStreak"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="showStreak" className="mb-1">
+                        Show Streaks
+                      </Label>
+                    </div>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="progressionBars"
+                  render={({ field }) => (
+                    <div className="flex items-center gap-3">
+                      <FormItem>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            id="progressionBars"
+                          />
+                        </FormControl>
+                      </FormItem>
+                      <Label htmlFor="progressionBars" className="mb-1">
+                        Progression Bars
                       </Label>
                     </div>
                   )}
