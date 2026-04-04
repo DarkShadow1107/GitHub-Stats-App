@@ -49,18 +49,7 @@ const FormSchema = z.object({
   }),
   hideBorder: z.boolean(),
   countPrivate: z.boolean(),
-  gradeFormat: z.enum(["number", "letter"]),
-  scoreSize: z.enum(["normal", "large"]),
-  showTotalContributions: z.boolean(),
-  showStreak: z.boolean(),
-  progressionBars: z.boolean(),
-  titleColor: z.string().optional(),
-  textColor: z.string().optional(),
-  iconColor: z.string().optional(),
-  bgColor: z.string().optional(),
-  borderColor: z.string().optional(),
-  borderRadius: z.string().optional(),
-  disableAnimations: z.boolean().default(false),
+
 });
 
 export function GhStatsForm() {
@@ -76,19 +65,7 @@ export function GhStatsForm() {
       username: "",
       hideBorder: true,
       countPrivate: true,
-      gradeFormat: "number",
       theme: themePreview || "default",
-      scoreSize: "normal",
-      showTotalContributions: false,
-      showStreak: false,
-      progressionBars: false,
-      titleColor: "",
-      textColor: "",
-      iconColor: "",
-      bgColor: "",
-      borderColor: "",
-      borderRadius: "",
-      disableAnimations: false,
     },
   });
 
@@ -98,18 +75,7 @@ export function GhStatsForm() {
       theme,
       hideBorder,
       countPrivate,
-      gradeFormat,
-      scoreSize,
-      showTotalContributions,
-      showStreak,
-      progressionBars,
-      titleColor,
-      textColor,
-      iconColor,
-      bgColor,
-      borderColor,
-      borderRadius,
-      disableAnimations
+
     } = data;
 
     setLoading(true);
@@ -120,19 +86,7 @@ export function GhStatsForm() {
     query.set("theme", theme);
     query.set("hide_border", hideBorder.toString());
     query.set("count_private", countPrivate.toString());
-    query.set("grade_format", gradeFormat);
-    query.set("score_size", scoreSize);
-    query.set("show_total_contributions", showTotalContributions.toString());
-    query.set("show_streak", showStreak.toString());
-    query.set("progression_bars", progressionBars.toString());
 
-    if (titleColor) query.set("title_color", titleColor.replace("#", ""));
-    if (textColor) query.set("text_color", textColor.replace("#", ""));
-    if (iconColor) query.set("icon_color", iconColor.replace("#", ""));
-    if (bgColor) query.set("bg_color", bgColor.replace("#", ""));
-    if (borderColor) query.set("border_color", borderColor.replace("#", ""));
-    if (borderRadius) query.set("border_radius", borderRadius);
-    if (disableAnimations) query.set("disable_animations", "true");
 
     push(`/user/${username}?${query.toString()}`);
   }
@@ -276,242 +230,13 @@ export function GhStatsForm() {
                   )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="gradeFormat"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value === "number"}
-                            onCheckedChange={(checked) => field.onChange(checked ? "number" : "letter")}
-                            id="gradeFormat"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="gradeFormat" className="mb-1">
-                        Use Numeric Grade
-                      </Label>
-                    </div>
-                  )}
-                />
 
-                <FormField
-                  control={form.control}
-                  name="scoreSize"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value === "large"}
-                            onCheckedChange={(checked) => field.onChange(checked ? "large" : "normal")}
-                            id="scoreSize"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="scoreSize" className="mb-1">
-                        Large Score Circle
-                      </Label>
-                    </div>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="showTotalContributions"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            id="showTotalContributions"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="showTotalContributions" className="mb-1">
-                        Show Total Contributions
-                      </Label>
-                    </div>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="showStreak"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            id="showStreak"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="showStreak" className="mb-1">
-                        Show Streaks
-                      </Label>
-                    </div>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="progressionBars"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            id="progressionBars"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="progressionBars" className="mb-1">
-                        Progression Bars
-                      </Label>
-                    </div>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="disableAnimations"
-                  render={({ field }) => (
-                    <div className="flex items-center gap-3">
-                      <FormItem>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            id="disableAnimations"
-                          />
-                        </FormControl>
-                      </FormItem>
-                      <Label htmlFor="disableAnimations" className="mb-1">
-                        Disable Animations
-                      </Label>
-                    </div>
-                  )}
-                />
               </div>
             </PopoverContent>
           </Popover>
         </div>
 
-        {/* Custom Colors & Borders Section */}
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="advanced-customization">
-            <AccordionTrigger className="text-lg font-medium">Advanced Customizations</AccordionTrigger>
-            <AccordionContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-            <FormField
-              control={form.control}
-              name="titleColor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Title Color</FormLabel>
-                  <div className="flex gap-2">
-                    <FormControl>
-                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '2f80ed'}`} />
-                    </FormControl>
-                    <FormControl>
-                      <Input placeholder="#2f80ed" {...field} />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="textColor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Text Color</FormLabel>
-                  <div className="flex gap-2">
-                    <FormControl>
-                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '434d58'}`} />
-                    </FormControl>
-                    <FormControl>
-                      <Input placeholder="#434d58" {...field} />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="iconColor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Icon Color</FormLabel>
-                  <div className="flex gap-2">
-                    <FormControl>
-                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || '4c71f2'}`} />
-                    </FormControl>
-                    <FormControl>
-                      <Input placeholder="#4c71f2" {...field} />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="bgColor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Background Color</FormLabel>
-                  <div className="flex gap-2">
-                    <FormControl>
-                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || 'fffefe'}`} />
-                    </FormControl>
-                    <FormControl>
-                      <Input placeholder="#fffefe" {...field} />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="borderColor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Border Color</FormLabel>
-                  <div className="flex gap-2">
-                    <FormControl>
-                      <Input type="color" className="w-12 h-10 p-1 cursor-pointer" {...field} value={field.value?.startsWith('#') ? field.value : `#${field.value || 'e4e2e2'}`} />
-                    </FormControl>
-                    <FormControl>
-                      <Input placeholder="#e4e2e2" {...field} />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="borderRadius"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Border Radius (px)</FormLabel>
-                  <FormControl>
-                    <Input type="number" placeholder="4.5" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+
 
         <Button type="submit" disabled={loading} className="w-full mt-4">
           {!loading ? "Generate Stats" : <Icons.spinner />}

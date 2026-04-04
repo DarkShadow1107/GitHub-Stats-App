@@ -174,5 +174,17 @@
   {
     "label": "Outrun",
     "value": "outrun"
+  },
+  {
+    "label": "Github Dark",
+    "value": "github_dark"
+  },
+  {
+    "label": "Transparent",
+    "value": "transparent"
+  },
+  {
+    "label": "Bcalin",
+    "value": "bcalin"
   }
 ]
