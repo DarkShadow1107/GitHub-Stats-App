@@ -51,18 +51,6 @@ export const Preview = () => {
     theme,
     countPrivate,
     hideBorder,
-    gradeFormat,
-    scoreSize,
-    showTotalContributions,
-    showStreak,
-    progressionBars,
-    titleColor,
-    textColor,
-    iconColor,
-    bgColor,
-    borderColor,
-    borderRadius,
-    disableAnimations,
   });
 
   const tabsData = [
